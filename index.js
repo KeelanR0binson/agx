@@ -3,7 +3,7 @@ const nightmare = Nightmare({ show: true })
 
 nightmare
   .goto('https://apps.fliplet.com/ucl-agx')
-  .wait(5000)
+  .click('.swiper-button-next-2462079')
   .wait(5000)
   .end()
   .then(console.log)

@@ -1,9 +1,9 @@
 const Nightmare = require('nightmare')
-const nightmare = Nightmare({ show: true, height:768, width:1366})
+const nightmare = Nightmare({ show: false, height:768, width:1366})
 
-var firstName = 'test'
-var surname = 'user'
-var email = 'testUser@agx.co.co.co'
+var firstName = 'test2'
+var surname = 'user2'
+var email = 'testUser@agx.co.co.co2'
 var phone = '99999999'
 var password = 'password'
 
@@ -30,8 +30,18 @@ nightmare
   .type('#Password', password)
   //confirm password
   .type('#confirmPassword', password)
-  //wait for testing
+  //register
   .click('button[class="btn btn-primary pull-right"]')
+  .wait(5000)
+
+  //login
+  .type('input[class="form-control profile_email"]', email)
+  .type('input[class="form-control profile_password"]', password)
+  //.click('button[class="btn btn-primary btn-login"]')
+  .click('button[type="submit"]')
+
+  //logged in?
+  
   .wait(5000)
   .end()
   .then(console.log)

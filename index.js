@@ -1,5 +1,32 @@
+var express = require('express');
+var app = express();
+var path = require('path');
+
+// viewed at http://localhost:8080
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dash.html'));
+});
+
+app.get('/startTest', function(req, res) {
+    res.sendFile(path.join(__dirname + '/redirect.html'));
+});
+
+app.post('/startTest', function (req, res) {
+  //res.send('POST request to the homepage')
+  //res.redirect(307, '/');
+  conductTest();
+})
+
+app.use(express.static('public'))
+
+app.listen(8080);
+//conductTest();
+
+
+function conductTest() {
+
 const Nightmare = require('nightmare')
-const nightmare = Nightmare({ show: false, height:768, width:1366})
+const nightmare = Nightmare({ show: true, height:768, width:1366})
 
 var firstName = 'test2'
 var surname = 'user2'
@@ -48,3 +75,5 @@ nightmare
   .catch(error => {
     console.error('Search failed:', error)
   })
+
+}

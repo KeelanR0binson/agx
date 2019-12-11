@@ -31,6 +31,7 @@ nightmare
   //confirm password
   .type('#confirmPassword', password)
   //wait for testing
+  .click('button[class="btn btn-primary pull-right"]')
   .wait(5000)
   .end()
   .then(console.log)

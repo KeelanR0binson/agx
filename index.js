@@ -2,6 +2,17 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+//mysql config
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'agx.ce4179f1dmhq.eu-west-1.rds.amazonaws.com',
+  user     : 'admin',
+  password : 'Ucl20192019',
+  database : 'agx'
+});
+
+
+
 // viewed at http://localhost:8080
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/dash.html'));

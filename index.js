@@ -11,6 +11,9 @@ var connection = mysql.createConnection({
   database : 'agx'
 });
 
+//open connection
+connection.connect();
+
 
 
 // viewed at http://localhost:8080
@@ -77,14 +80,24 @@ nightmare
   .type('input[class="form-control profile_password"]', password)
   //.click('button[class="btn btn-primary btn-login"]')
   .click('button[type="submit"]')
-
   //logged in?
   
-  .wait(5000)
   .end()
   .then(console.log)
+
   .catch(error => {
     console.error('Search failed:', error)
+
+    //insert 0 entry to DB if test fails
+    connection.query('INSERT INTO `agx_test`(test_success) VALUES (0);', function (error, results, fields) {
+      if (error) throw error;
+      //console.log('The solution is: ', results[0].solution);
+    });
+
   })
+
+    connection.query('INSERT INTO `agx_test`(test_success) VALUES (1);', function (error, results, fields) {
+  if (error) throw error;
+  });
 
 }

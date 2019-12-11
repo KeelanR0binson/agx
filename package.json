@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mysql": "^2.17.1",
     "nightmare-xpath": "^2.0.2"
   }
 }

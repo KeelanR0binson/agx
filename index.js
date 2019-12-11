@@ -4,6 +4,7 @@ const nightmare = Nightmare({ show: true })
 nightmare
   .goto('https://apps.fliplet.com/ucl-agx')
   .click('.swiper-button-next-2462079')
+  .click('input[value="Login "]')
   .wait(5000)
   .end()
   .then(console.log)
